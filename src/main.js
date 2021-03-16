@@ -40,6 +40,11 @@ Vue.component('LikeNumber', LikeNumber);
 //   }
 // });
 
+// 関数の引数は必ず取る
+Vue.filter("upperCase", function(value) {
+  return value.toUpperCase();
+});
+
 new Vue({
   // ES6の書き方
   render: h => h(App),

@@ -1,9 +1,24 @@
 <template>
-  <p v-border:dotted.round.shadow="{width: '5px', color: 'red'}">Home</p>
+  <div>
+    <p v-border:dotted.round.shadow="{width: '5px', color: 'red'}">Home</p>
+    <h2>{{ title | upperCase }}</h2>
+    <p>{{ subTitle | lowerCase | upperCase }}</p>
+  </div>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      title: "Welcome to Tokyo",
+      subTitle: "Tokyo is a great city"
+    }
+  },
+  filters: {
+    lowerCase(value) {
+      return value.toLowerCase();
+    }
+  },
   // ローカルにカスタムディレクティブを追加
   directives: {
     border(el, binding) {

@@ -1,8 +1,14 @@
 <template>
   <div class="main">
     <button @click="show = !show">切り替え</button>
-    <transition name="fade" appear> 
+    <transition name="fade" appear>
       <p v-if="show">hello</p>
+    </transition>
+    <transition
+      enter-active-class="animate__animated animate__bounce"
+      leave-active-class="animate__animated animate__flash"
+      appear>
+      <p v-if="show">hello2</p>
     </transition>
     <transition name="slide" type="animation" appear>
       <p v-if="show">bye</p>

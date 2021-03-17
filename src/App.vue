@@ -13,6 +13,13 @@
     <transition name="slide" type="animation" appear>
       <p v-if="show">bye</p>
     </transition>
+
+    <button @click="myAnimation = 'slide'">Slide</button>
+    <button @click="myAnimation = 'fade'">Fade</button>
+    <p>{{ myAnimation }}</p>
+    <transition :name="myAnimation" appear>
+      <p v-if="show">bye</p>
+    </transition>
   </div>
 </template>
 
@@ -20,7 +27,8 @@
 export default {
   data() {
     return {
-      show: true
+      show: true,
+      myAnimation: 'fade'
     };
   }
 }

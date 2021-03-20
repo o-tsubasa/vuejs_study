@@ -34,6 +34,20 @@
     <transition :name="myAnimation" appear>
       <p v-if="show">bye</p>
     </transition>
+
+    <!-- @after-enter="afterEnter"
+    @enter-cancelled="enterCancelled"
+    @after-leave="afterLeave"
+    @before-leave="beforeLeave"
+    @leave-cancelled="leaveCancelled" -->
+    <transition
+      :css="false"
+      @before-enter="beforeEnter"
+      @enter="enter"
+      @leave="leave"
+    >
+      <div class="circle" v-if="show"></div>
+    </transition>
   </div>
 </template>
 
@@ -53,10 +67,63 @@ export default {
       myComponent: "ComponentA"
     };
   },
+  methods: {
+    beforeEnter(el) {
+      // 現れる前
+      el.style.transform = 'scale(0)'
+    },
+    enter(el, done) {
+      // 現れるとき
+      // done() // アニメーションが終わったことを教える関数
+      let scale = 0
+      const interval = setInterval(() => {
+        el.style.transform = `scale(${scale})`;
+        scale += 0.1
+        if (scale > 1) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
+    },
+    // afterEnter() {
+    //   // 現れた後
+    // },
+    // enterCancelled() {
+    //   // 現れるアニメーションがキャンセルされたとき
+    // },
+    // beforeLeave() {
+    //   // 消える前
+    // },
+    leave(el, done) {
+      // 消えるとき
+      let scale = 1
+      const interval = setInterval(() => {
+        el.style.transform = `scale(${scale})`;
+        scale -= 0.1
+        if (scale < 0) {
+          clearInterval(interval);
+          done();
+        }
+      }, 20);
+    },
+    // afterLeave() {
+    //   // 消えた後
+    // },
+    leaveCancelled() {
+      // 消えるアニメーションがキャンセルされたとき
+    },
+  }
 }
 </script>
 
 <style scoped>
+.circle {
+  width: 200px;
+  height: 200px;
+  margin: auto;
+  background-color: deeppink;
+  border-radius: 100px;
+}
 .fade-enter {
   /* 現れる時の最初の状態 */
   opacity: 0;

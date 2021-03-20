@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import App from './App.vue';
-import LikeNumber from './components/LikeNumber.vue';
+// import LikeNumber from './components/LikeNumber.vue';
 
 Vue.config.productionTip = false
 
 // コンポーネントをグローバル登録する場合
-Vue.component('LikeNumber', LikeNumber);
+// Vue.component('LikeNumber', LikeNumber);
 
 // Vue.directive("border", {
 //   bind(el, binding, vnode) {

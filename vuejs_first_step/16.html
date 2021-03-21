@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+  <!-- V2.x -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <div id="app">
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+    <local-component></local-component>
+  </div>
+  <div id="app2">
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+    <local-component></local-component>
+  </div>
+
+  <script>
+    // グローバルコンポーネント
+    Vue.component('my-component', {
+      data: function() {
+        return {
+          number: 12
+        }
+      },
+      template: '<p>いいね（{{number}}）</p>'
+    })
+
+    var component = {
+      data: function(){
+        return {
+          number: 12
+        }
+      },
+      template: '<p>いいね({{number}})<button @click="increment">+1</button></p>',
+      methods: {
+        increment: function() {
+          this.number += 1;
+        }
+      }
+    }
+
+    new Vue({
+      el: '#app',
+      // ローカルコンポーネント
+      components: {
+        'local-component': component
+      }
+    })
+    new Vue({
+      el: '#app2'
+    })
+  </script>
+
+  <!-- V3.x -->
+  <!-- <script src="https://unpkg.com/vue@next"></script>
+  <div id="app">
+    <p>{{ message }}</p>
+  </div>
+  <div id="app2"></div>
+  <div id="components-demo">
+    <hello></hello>
+    <hello></hello>
+    <hello></hello>
+  </div>
+
+  <script>
+    const app = Vue.createApp({})
+    app.component('hello', {
+      template: '<p>こんにちはcomponent</p>'
+    })
+    app.mount('#components-demo')
+
+    // Vueの宣言(Vueインスタンス)
+    var vm1 = Vue.createApp({
+      data: function() {
+        return {
+          message: 'こんにちは'
+        }
+      }
+    }).mount('#app')
+
+    Vue.createApp({
+      data: function() {
+        return {
+          name: '太郎'
+        }
+      },
+      template: '<h1>こんにちは、{{name}}</h1>'
+    }).mount('#app2')
+  </script> -->
+</body>
+</html>

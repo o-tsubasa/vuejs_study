@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- V2.x -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <div id="app">
+    <p>{{ message }}</p>
+    <hello></hello>
+    <hello></hello>
+    <hello></hello>
+  </div>
+
+  <div id="app2">
+  </div>
+  <div id="app3"></div>
+
+  <script>
+    Vue.component('hello', {
+      template: '<p>こんにちはcomponent</p>'
+    });
+
+    var vm = new Vue({
+      data: {
+        message: 'こんにちは'
+      }
+    })
+    vm.$mount('#app')
+
+    new Vue({
+      data: {
+        name: 'たろ'
+      },
+      template: '<h1>こんにちは、{{name}}<hello></hello></h1>'
+    }).$mount('#app2')
+
+    new Vue({
+      data: {
+        name: 'じろ'
+      },
+      render: function(createElement) {
+        return createElement('h1', 'こんにちは、' + this.name)
+      }
+    }).$mount('#app3')
+  </script>
+
+  <!-- V3.x -->
+  <!-- <script src="https://unpkg.com/vue@next"></script>
+  <div id="app">
+    <p>{{ message }}</p>
+  </div>
+  <div id="app2"></div>
+  <div id="components-demo">
+    <hello></hello>
+    <hello></hello>
+    <hello></hello>
+  </div>
+
+  <script>
+    const app = Vue.createApp({})
+    app.component('hello', {
+      template: '<p>こんにちはcomponent</p>'
+    })
+    app.mount('#components-demo')
+
+    // Vueの宣言(Vueインスタンス)
+    var vm1 = Vue.createApp({
+      data: function() {
+        return {
+          message: 'こんにちは'
+        }
+      }
+    }).mount('#app')
+
+    Vue.createApp({
+      data: function() {
+        return {
+          name: '太郎'
+        }
+      },
+      template: '<h1>こんにちは、{{name}}</h1>'
+    }).mount('#app2')
+  </script> -->
+</body>
+</html>

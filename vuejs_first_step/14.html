@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- V2.x -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <div id="app1">
+    <p>{{ message }}</p>
+  </div>  
+
+  <div id="app2">
+    <p>{{ message }}</p>
+    <button @click="changeMessage1">インスタンス１のMessageを変更</button>
+  </div>
+
+  <script>
+    var vm1 = new Vue({
+      el: '#app1',
+      data: {
+        message: 'インスタンス１'
+      }
+    })
+
+    var vm2 = new Vue({
+      el: '#app2',
+      data: {
+        message: 'インスタンス２'
+      },
+      methods: {
+        changeMessage1: function() {
+          vm1.message = 'インスタンス２から変えました'
+        }
+      }
+    })
+  </script>
+
+  <!-- V3.x -->
+  <!-- <script src="https://unpkg.com/vue@next"></script>
+  <div id="app1">
+    <p>{{ message }}</p>
+  </div>  
+
+  <div id="app2">
+    <p>{{ message }}</p>
+    <button @click="changeMessage1">インスタンス１のMessageを変更</button>
+  </div>
+
+  <script>
+    // Vueの宣言(Vueインスタンス)
+    var vm1 = Vue.createApp({
+      data: function() {
+        return {
+          message: 'インスタンス１'
+        }
+      }
+    }).mount('#app1')
+
+    var vm2 = Vue.createApp({
+      data: function() {
+        return {
+          message: 'インスタンス2'
+        }
+      },
+      methods: {
+        changeMessage1: function() {
+          vm1.message = 'インスタンス２から変えました'
+        }
+      }
+    }).mount('#app2')
+  </script> -->
+</body>
+</html>

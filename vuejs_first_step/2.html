@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- V2.x -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <div id='app'>
+    <p v-once>{{ message }}</p>
+    <p>{{ sayHi() }}</p>
+    <p v-html="html"></p>
+    <a :href="url">Google</a>
+    <a :[attribute]="url">Google</a>
+    <a :href="urlTwitter" :id='number'>Twitter</a>
+    <a v-bind='{ href: urlTwitter, id: number }'>Twitter</a>
+    <a v-bind='instaObject'>Insta</a>  <!-- オブジェクトを指定することもできる -->
+  </div>  
+
+  <script>
+    // Vueの宣言(Vueインスタンス)
+    new Vue({
+          // このビューはどこのタグに対して対応しているかを示すもの
+      el: '#app',
+      data: {
+          message: 'HelloWorld',
+          html: '<h1>h1です</h1>',
+          url: 'https://google.com',
+          urlTwitter: 'https://twitter.com',
+          number: 31,
+          attribute: 'href',
+          instaObject: {
+            href: 'https://instagram.com',
+            id: 32
+          }
+      },
+      methods: {
+        sayHi() {
+          this.message = 'Hello VueJS'
+          return 'Hi'
+        }
+      }
+    })
+  </script>
+
+  <!-- V3.x -->
+  <!-- <script src="https://unpkg.com/vue@next"></script>
+  <div id='app'>
+    <p v-once>{{ message }}</p>
+    <p>{{ sayHi() }}</p>
+    <p v-html="html"></p>
+    <a :href="url">Google</a>
+    <a :[attribute]="url">Google</a>
+    <a :href="urlTwitter" :id='number'>Twitter</a>
+    <a v-bind='{ href: urlTwitter, id: number }'>Twitter</a>
+    <a v-bind='instaObject'>Insta</a> 
+  </div>  
+
+  <script>
+    // Vueの宣言(Vueインスタンス)
+    Vue.createApp({
+      data() {
+        return {
+          message: 'HelloWorld',
+          html:'<h1>h1です</h1>',
+          url: 'https://google.com',
+          urlTwitter: 'https://twitter.com',
+          number: 31,
+          attribute: 'href',
+          instaObject: {
+            href: 'https://instagram.com',
+            id: 32
+          }
+        }
+      },
+      methods: {
+        sayHi() {
+          this.message = 'Hello VueJS'
+          return 'Hi'
+        }
+      }
+    }).mount('#app')
+  </script> -->
+</body>
+</html>

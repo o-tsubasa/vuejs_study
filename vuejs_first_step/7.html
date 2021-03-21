@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    .red {
+      color: red;
+    }
+    .bg-blue {
+      background-color: blue;
+    }
+  </style>
+  <!-- V2.x -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <div id='app'>
+    <h1 :class="classObject">Hello</h1>
+    <button @click="isActive = !isActive">切り替え</button>
+    
+    <h1 :class="[{red: isActive}, bg]">Hello</h1>
+  </div>  
+
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        isActive: true,
+        color: 'red',
+        bg: 'bg-blue'
+      },
+      computed: {
+        classObject: function() {
+          return { red: this.isActive, 'bg-blue': !this.isActive }
+        }
+      }
+    })
+  </script> -->
+
+  <!-- V3.x -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <div id='app'>
+    <h1 :class="classObject">Hello</h1>
+    <button @click="isActive = !isActive">切り替え</button>
+    
+    <h1 :class="[{red: isActive}, bg]">Hello</h1>
+  </div>  
+
+  <script>
+    // Vueの宣言(Vueインスタンス)
+    Vue.createApp({
+      data() {
+        return {
+          isActive: true,
+          color: 'red',
+          bg: 'bg-blue'
+        }
+      },
+      computed: {
+        classObject: function() {
+          return { red: this.isActive, 'bg-blue': !this.isActive }
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

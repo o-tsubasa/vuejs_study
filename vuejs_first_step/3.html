@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- V2.x -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <div id='app'>
+    <p>現在{{ number }}回クリックされてます</p>
+    <button v-on:click="countUp(2)">カウントアップ</button>
+
+    <p v-on:mousemove='changeMousePosition(3, $event)'>マウスを乗せてください</p>
+    <p>X: {{ x }}, Y: {{ y }}</p>
+
+    <input type="text" v-on:keyup.enter='myAlert'> 
+  </div>  
+
+  <script>
+    // Vueの宣言(Vueインスタンス)
+    new Vue({
+          // このビューはどこのタグに対して対応しているかを示すもの
+      el: '#app',
+      data: {
+          number: 0,
+          x: 0,
+          y: 0,
+      },
+      methods: {
+        countUp: function(times) {
+          this.number += 1 * times
+        },
+        changeMousePosition: function(divideNumber, event) {
+          this.x = event.clientX / divideNumber;
+          this.y = event.clientY / divideNumber;
+        },
+        myAlert() {
+          alert('アラート');
+        }
+      }
+    })
+  </script> -->
+
+  <!-- V3.x -->
+  <script src="https://unpkg.com/vue@next"></script>
+  <div id='app'>
+    <p>現在{{ number }}回クリックされてます</p>
+    <button v-on:click="countUp(2)">カウントアップ</button>
+
+    <p v-on:mousemove='changeMousePosition(3, $event)'>マウスを乗せてください<span v-on:mousemove.stop>反応しないでください</span></p>
+    <p>X: {{ x }}, Y: {{ y }}</p>
+    <input type="text" v-on:keyup.enter='myAlert'> 
+  </div>  
+
+  <script>
+    // Vueの宣言(Vueインスタンス)
+    Vue.createApp({
+      data() {
+        return {
+          number: 0,
+          x: 0,
+          y: 0,
+        }
+      },
+      methods: {
+        countUp(times) {
+          this.number += 1 * times
+        },
+        changeMousePosition(divideNumber, event) {
+          this.x = event.clientX / divideNumber;
+          this.y = event.clientY / divideNumber;
+        },
+        myAlert() {
+          alert('アラート');
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+</html>

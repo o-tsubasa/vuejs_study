@@ -13,6 +13,6 @@ export default new Router({
   // URLとコンポーネントのマッピングを行う
   routes: [
     { path: '/', component: Home },
-    { path: "/users", component: Users }
+    { path: "/users/:id", component: Users }
   ]
 });
